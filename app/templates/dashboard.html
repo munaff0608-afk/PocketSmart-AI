@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="page-head"><div><p class="eyebrow">DASHBOARD</p><h1>Hello, {{ user['name'] }} 👋</h1><p>Pick a planner or revisit your latest recommendation.</p></div></div>
+<div class="grid three">
+<a class="card link-card" href="/home-planner"><h2>🏠 Home</h2><p>Plan your room.</p></a>
+<a class="card link-card" href="/party-planner"><h2>🎉 Party</h2><p>Plan your event.</p></a>
+<a class="card link-card" href="/jewelry-planner"><h2>💎 Jewelry</h2><p>Match your look.</p></a>
+</div>
+<h2 class="section-title">Recent plans</h2>
+{% if history %}
+<div class="list">
+{% for h in history %}
+<a class="card row-card" href="/recommendations-details/{{ h['id'] }}"><strong>{{ h['planner_type']|title }} Planner</strong><span>{{ h['created_at'][:19].replace('T',' ') }}</span></a>
+{% endfor %}
+</div>
+{% else %}<div class="card">No recommendations yet. Start with one of the planners above.</div>{% endif %}
+{% endblock %}

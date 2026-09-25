@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Recommendations{% endblock %}
+{% block content %}
+<div class="page-head"><div><p class="eyebrow">{{ planner_type|upper }} RECOMMENDATION</p><h1>Your personalized plan ✨</h1><p>{{ result.summary }}</p></div></div>
+<div class="card"><h2>Budget allocation</h2><div class="allocation">
+{% for key, value in result.allocation.items() %}
+<div><span>{{ key|replace('_',' ')|title }}</span><strong>₹{{ "%.0f"|format(value) }}</strong></div>
+{% endfor %}
+</div></div>
+<h2 class="section-title">Suggestions</h2>
+<div class="grid two">
+{% for item in result.recommendations %}
+<div class="card product-card">
+<div class="pill">{{ item.platform }}</div>
+<h3>{{ item.name }}</h3>
+<p>{{ item.reason }}</p>
+{% if item.estimated_price is defined %}<strong>₹{{ item.estimated_price }}</strong>{% endif %}
+<a class="btn small" href="{{ item.url }}" target="_blank" rel="noopener">Open platform</a>
+</div>
+{% endfor %}
+</div>
+<p class="muted">Source: {{ result.source }}. Always verify live price, stock, seller/vendor, delivery and suitability on the linked platform.</p>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}History{% endblock %}
+{% block content %}
+<div class="page-head"><div><p class="eyebrow">HISTORY</p><h1>Your recommendation history</h1></div></div>
+{% if history %}
+<div class="list">
+{% for h in history %}
+<a class="card row-card" href="/recommendations-details/{{ h['id'] }}">
+<strong>{{ h['planner_type']|title }} Planner</strong>
+<span>{{ h['created_at'][:19].replace('T',' ') }}</span>
+</a>
+{% endfor %}
+</div>
+{% else %}<div class="card">Nothing saved yet.</div>{% endif %}
+{% endblock %}

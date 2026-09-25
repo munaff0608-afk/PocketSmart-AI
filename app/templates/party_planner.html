@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Party Planner{% endblock %}
+{% block content %}
+<div class="page-head"><div><p class="eyebrow">PARTY PLANNER</p><h1>Plan the celebration 🎉</h1><p>Allocate your budget across food, venue, decoration and entertainment.</p></div></div>
+<form id="party-form" class="card form-card planner-form">
+<label>Budget (₹)<input name="budget" type="number" min="1" required placeholder="15000"></label>
+<label>Guests<input name="guests" type="number" min="1" required placeholder="20"></label>
+<label>Event type<select name="event_type"><option>Birthday</option><option>Wedding</option><option>Corporate</option><option>Anniversary</option><option>Family Function</option></select></label>
+<label>Venue preference<select name="venue"><option>Any</option><option>Home</option><option>Restaurant</option><option>Banquet Hall</option><option>Outdoor</option></select></label>
+<label>Food preference<select name="food_preference"><option>Mixed</option><option>Vegetarian</option><option>Non-Vegetarian</option></select></label>
+<label>Notes<textarea name="notes" placeholder="Theme, location, special requirements..."></textarea></label>
+<button class="btn" type="submit">Generate Party Plan ✨</button>
+</form>
+<div id="result"></div>
+{% endblock %}

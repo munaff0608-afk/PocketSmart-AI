@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Jewelry Planner{% endblock %}
+{% block content %}
+<div class="page-head"><div><p class="eyebrow">JEWELRY PLANNER</p><h1>Match the occasion 💎</h1><p>Use text preferences and optionally upload an outfit image for visual context.</p></div></div>
+<form id="jewelry-form" class="card form-card planner-form" enctype="multipart/form-data">
+<label>Budget (₹)<input name="budget" type="number" min="1" required placeholder="5000"></label>
+<label>Occasion<input name="occasion" required placeholder="Wedding / Party / Festival"></label>
+<label>Style<select name="style"><option>Elegant</option><option>Minimal</option><option>Traditional</option><option>Statement</option><option>Contemporary</option></select></label>
+<label>Outfit color<input name="outfit_color" placeholder="Optional"></label>
+<label>Outfit image (optional)<input name="outfit_image" type="file" accept="image/png,image/jpeg,image/webp"></label>
+<label>Notes<textarea name="notes" placeholder="Metal preference, neckline, desired look..."></textarea></label>
+<button class="btn" type="submit">Generate Jewelry Plan ✨</button>
+</form>
+<div id="result"></div>
+{% endblock %}
